@@ -18,6 +18,7 @@ A minimalist brutalism weather application built with React, Vite, and OpenWeath
 ---
 
 <h1>vercel link</ h1>
+<br><br>
 neobweather.vercel.app
 
 
