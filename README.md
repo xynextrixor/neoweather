@@ -17,6 +17,15 @@ A minimalist brutalism weather application built with React, Vite, and OpenWeath
 
 ---
 
+<h1>vercel link</ h1>
+neobweather.vercel.app
+
+
+
+
+
+
+
 ## ✨ FEATURES
 
 ✅ **Current Weather** - Temperature, feels-like, weather condition  
