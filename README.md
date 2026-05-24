@@ -276,3 +276,4 @@ Built with brutalist principles and zero compromise.
 **Free Tier**: 1000 calls/day, 60 calls/min
 
 **Ready to check the weather? GET HARSH. GET BRUTAL.**
+# neoweather
