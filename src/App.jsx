@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY || 'YOUR_API_KEY_HERE';
+const API_KEY = import.meta.env.VITE_WEATHERAPI_KEY || 'YOUR_API_KEY_HERE';
 
 export default function App() {
   const [cities, setCities] = useState([]);
