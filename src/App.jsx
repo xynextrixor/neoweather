@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './App.css';
-
-const API_KEY = import.meta.env.VITE_WEATHERAPI_KEY || 'YOUR_API_KEY_HERE';
 
 export default function App() {
   const [cities, setCities] = useState([]);
@@ -44,19 +41,18 @@ export default function App() {
     try {
       setLoading(true);
       setError(null);
-      
-      const weatherRes = await axios.get(
-        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lon}&aqi=no`
-      );
-      
-      const forecastRes = await axios.get(
-        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${lat},${lon}&days=5&aqi=no`
-      );
 
-      setCurrentCity(weatherRes.data);
-      setForecast(forecastRes.data.forecast.forecastday);
+      const response = await fetch(`/api/weather?q=${encodeURIComponent(`${lat},${lon}`)}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch weather data');
+      }
+
+      setCurrentCity(data.current);
+      setForecast(data.forecast);
     } catch (err) {
-      setError('Failed to fetch weather data');
+      setError(err.message || 'Failed to fetch weather data');
     } finally {
       setLoading(false);
     }
@@ -67,19 +63,17 @@ export default function App() {
       setLoading(true);
       setError(null);
 
-      const res = await axios.get(
-        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}&aqi=no`
-      );
+      const response = await fetch(`/api/weather?q=${encodeURIComponent(city)}`);
+      const data = await response.json();
 
-      setCurrentCity(res.data);
+      if (!response.ok) {
+        throw new Error(data.error || `City "${city}" not found`);
+      }
 
-      const forecastRes = await axios.get(
-        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=5&aqi=no`
-      );
-
-      setForecast(forecastRes.data.forecast.forecastday);
+      setCurrentCity(data.current);
+      setForecast(data.forecast);
     } catch (err) {
-      setError(`City "${city}" not found`);
+      setError(err.message || `City "${city}" not found`);
     } finally {
       setLoading(false);
     }

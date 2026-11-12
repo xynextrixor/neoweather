@@ -6,7 +6,7 @@ neobweather.vercel.app
 
 ## Raw. Bold. Uncompromising.
 
-A minimalist brutalism weather application built with React, Vite, and OpenWeather API. No fluff. Just data and stark typography.
+A minimalist brutalism weather application built with React, Vite, and WeatherAPI.com. No fluff. Just data and stark typography.
 
 ---
 
@@ -53,14 +53,14 @@ neobweather.vercel.app
 Copy from `.env.example`:
 
 ```bash
-VITE_OPENWEATHER_API_KEY=YOUR_API_KEY_HERE
+WEATHERAPI_KEY=YOUR_API_KEY_HERE
 ```
 
 ### 2. Get Your API Key
 
-1. Visit: https://openweathermap.org/api
+1. Visit: https://www.weatherapi.com/
 2. Sign up (free tier available)
-3. Get your API key from: https://openweathermap.org/api/one-call-3
+3. Get your API key from your WeatherAPI account
 4. Paste into `.env`
 
 ### 3. Install Dependencies
@@ -93,8 +93,7 @@ Outputs to `dist/` folder - deploy to any static host (Vercel, Netlify, etc.)
 | ------------------- | ------------------------- |
 | **React 18**        | UI framework              |
 | **Vite**            | Ultra-fast build tool     |
-| **Axios**           | HTTP client for API calls |
-| **OpenWeather API** | Weather data source       |
+| **WeatherAPI.com**  | Weather data source       |
 
 ---
 
@@ -157,10 +156,8 @@ project/
 ## 🔌 API ENDPOINTS USED
 
 ```
-GET https://api.openweathermap.org/data/2.5/weather?q={city}&appid={key}&units=metric
-GET https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={key}&units=metric
-GET https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=metric
-GET https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={key}&units=metric
+GET /api/weather?q={city}
+GET /api/weather?q={latitude},{longitude}
 ```
 
 ---
@@ -209,7 +206,7 @@ Error: Failed to fetch weather data
 ```
 
 ✅ Check `.env` file has correct API key  
-✅ Ensure key is active at openweathermap.org  
+✅ Ensure key is active at weatherapi.com
 ✅ Free tier has 1000 calls/day limit
 
 ### City Not Found
@@ -236,8 +233,8 @@ Error: City "XYZ" not found
 
 ```bash
 npm run build
-# Deploy dist/ folder to Vercel
-# Add VITE_OPENWEATHER_API_KEY to env vars
+# Deploy the project to Vercel
+# Add WEATHERAPI_KEY to Vercel environment variables (without a VITE_ prefix)
 ```
 
 ### Netlify
@@ -285,9 +282,8 @@ Built with brutalist principles and zero compromise.
 
 ---
 
-**Website**: https://openweathermap.org/  
-**API Docs**: https://openweathermap.org/api/  
-**Free Tier**: 1000 calls/day, 60 calls/min
+**Website**: https://www.weatherapi.com/
+**API Docs**: https://www.weatherapi.com/docs/
 
 **Ready to check the weather? GET HARSH. GET BRUTAL.**
 # neoweather
