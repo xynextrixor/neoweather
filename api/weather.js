@@ -1,9 +1,9 @@
 const WEATHER_API_URL = 'https://api.weatherapi.com/v1';
 
 export default async function handler(req, res) {
-  const { q } = req.query;
+  const q = typeof req.query.q === 'string' ? req.query.q.trim() : '';
 
-  if (typeof q !== 'string' || !q.trim()) {
+  if (!q) {
     return res.status(400).json({ error: 'A location is required' });
   }
 
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
   const params = new URLSearchParams({
     key: apiKey,
-    q: q.trim(),
+    q,
     days: '5',
     aqi: 'no'
   });
@@ -25,7 +25,8 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      return res.status(response.status).json({
+      const status = data.error?.code === 1006 ? 404 : data.error?.code === 2008 ? 502 : response.status;
+      return res.status(status).json({
         error: data.error?.message || 'Weather service request failed'
       });
     }
