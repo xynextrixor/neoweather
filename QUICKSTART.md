@@ -5,12 +5,11 @@
 ### Step 1: Get API Key (2 mins)
 
 ```
-1. Go to: https://www.weatherapi.com/
+1. No API key is required.
 2. Click "Sign Up" (free account)
 3. Verify email
-4. Open Vercel Project Settings → Environment Variables
-5. Add `WEATHERAPI_KEY` with your API key
-6. Do not use the `VITE_` prefix: the key must stay server-side
+4. Deploy the project to Vercel
+5. Weather data is fetched through the server-side `/api/weather` route
 ```
 
 ### Step 2: Install & Run (1 min)
@@ -64,7 +63,7 @@ npm run dev
 ### "Failed to fetch weather data"
 
 1. Check `.env` file has API key
-2. Go to weatherapi.com → API section
+2. Open-Meteo is available without an API key
 3. Verify key is "Active" (not disabled)
 4. Wait 10 minutes after creating (they can take time)
 5. Check browser console (F12) for exact error
@@ -141,10 +140,10 @@ It's intentionally harsh. That's the point.
 ## ❓ FAQ
 
 **Q: Can I use someone else's API key?**  
-A: Not recommended. Create a free account at weatherapi.com
+A: No API key or account is required.
 
 **Q: Will my API key be exposed?**  
-A: No. Weather requests go through the Vercel `/api/weather` serverless endpoint, and `WEATHERAPI_KEY` is never sent to the browser.
+A: No. Weather requests go through the Vercel `/api/weather` serverless endpoint, and no secret is required.
 
 **Q: Can I change the design?**  
 A: Yes! Edit `src/App.css`. But it's brutalism - keep it harsh!

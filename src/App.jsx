@@ -213,7 +213,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p>POWERED BY WEATHERAPI • DATA AUTO-UPDATES HOURLY</p>
+        <p>POWERED BY OPEN-METEO • DATA AUTO-UPDATES HOURLY</p>
       </footer>
     </div>
   );
